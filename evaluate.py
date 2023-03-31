@@ -29,8 +29,10 @@ stocks = map(str.upper, args.stocks)
 
 
 for stock in stocks:
-    # base_url = 'https://finance.yahoo.com/quote/' + stock
-    base_url = f'https://finance.yahoo.com/quote/{stock}/cash-flow?p={stock}'
+    base_url = 'https://finance.yahoo.com/quote/' + stock
+    # base_url = f'https://finance.yahoo.com/quote/{stock}/cash-flow?p={stock}'
+    # base_url = f'https://finance.yahoo.com/quote/{stock}/financials?p={stock}'
+    # base_url = f'https://finance.yahoo.com/quote/{stock}/balance-sheet?p={stock}'
     # print(f'14: base_url >>>\n{base_url}')
     driver.get(base_url)
     # print(f'30: driver.title >>>\n{driver.title}')
@@ -61,16 +63,18 @@ for stock in stocks:
         continue
 
     if re.search(stock, driver.title, re.IGNORECASE):
-        print(f'stock found, {driver.title}', end='\n\n')
+        print("")
+        print("***************************************")
+        print(f'Stock found, {driver.title}', end='\n\n')
 
         # Summary
-        # summary(driver)
+        summary(driver)
 
         # Income statement
-        # financials(driver, stock)
+        financials(driver, stock)
 
         # Balance sheet
-        # balance_sheet(driver, stock)
+        balance_sheet(driver, stock)
 
         # Cash flow
         cash_flow(driver, stock)
