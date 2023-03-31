@@ -1,5 +1,4 @@
 import argparse
-from bs4 import BeautifulSoup
 from analisis_sections import balance_sheet, cash_flow, financials, summary
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
@@ -9,7 +8,7 @@ import re
 
 parser = argparse.ArgumentParser(description='get info from a stock')
 parser.add_argument('--stocks', nargs='+',
-                    help='name of the stock', required=True)
+                    help='name of the stock', required=True, metavar="stock")
 parser.add_argument('--headless', action='store_false')
 parser.add_argument('--detach', action='store_true')
 
