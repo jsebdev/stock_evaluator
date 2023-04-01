@@ -84,7 +84,7 @@ def balance_sheet(driver, stock):
 def cash_flow(driver, stock):
     driver.get(
         f'https://finance.yahoo.com/quote/{stock}/cash-flow?p={stock}')
-    print(f'Cash flow (last 5 years) ({driver.current_url})')
+    print(f'Cash flow (last 4 years) ({driver.current_url})')
     table = driver.find_element(
         By.XPATH,    '//*[@id="Col1-1-Financials-Proxy"]/section/div[3]/div[1]/div')
     table_soup = BeautifulSoup(table.get_attribute('outerHTML'), 'html.parser')
